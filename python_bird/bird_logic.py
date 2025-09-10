@@ -26,7 +26,7 @@ def bird_fly(bird_name):
     random_action = ["날고있습니다.", "자고있습니다", "날개가 부러졌습니다.", "날기싫어 뛰고있습니다."]
     random_weights = [0.7,0.1,0.1,0.1]  # 확률
     # random.choices() 함수를 사용하여 확률적으로 항목 선택
-    if bird_name == "날기":
+    if bird_name == "러버덕":
         action = "날지 않습니다."
     else:
         action = random.choices(random_action, weights=random_weights, k=1)[0]
@@ -47,7 +47,10 @@ def bird_speed(bird_name, weight):
 
     try:
         found_items = [tuple(item.values())[1] for item in bird_list if item.get('새의 종류') == bird_name][0]
-        print(f'{bird_name}는 "{found_items * weight}" 의 속도로 달립니다.')
+        if bird_name == "러버덕":
+            print(f'{bird_name}는 속도가 0입니다. 달리지 못합니다.')
+        else:
+            print(f'{bird_name}는 "{found_items * weight}" 의 속도로 달립니다.')
     except IndexError or UnboundLocalError:
         print("새의 속도 정보를 찾을 수 없습니다.")
     
