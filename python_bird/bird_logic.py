@@ -26,7 +26,10 @@ def bird_fly(bird_name):
     random_action = ["날고있습니다.", "자고있습니다", "날개가 부러졌습니다.", "날기싫어 뛰고있습니다."]
     random_weights = [0.7,0.1,0.1,0.1]  # 확률
     # random.choices() 함수를 사용하여 확률적으로 항목 선택
-    action = random.choices(random_action, weights=random_weights, k=1)[0]
+    if bird_name == "날기":
+        action = "날지 않습니다."
+    else:
+        action = random.choices(random_action, weights=random_weights, k=1)[0]
 
     print(f'{bird_name}은(는) {action}')
 
