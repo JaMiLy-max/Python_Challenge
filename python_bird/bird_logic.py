@@ -46,11 +46,16 @@ def bird_speed(bird_name, weight):
     bird_list = bird_cry_list()
 
     try:
+        buff = 1
         found_items = [tuple(item.values())[1] for item in bird_list if item.get('새의 종류') == bird_name][0]
+        
         if bird_name == "러버덕":
             print(f'{bird_name}는 속도가 0입니다. 달리지 못합니다.')
         else:
-            print(f'{bird_name}는 "{found_items * weight}" 의 속도로 달립니다.')
+            if bird_name not in ("닭", "러버덕"):
+                buff = 2
+            
+            print(f'{bird_name}는 "{found_items * weight * buff}" 의 속도로 달립니다.')
     except IndexError or UnboundLocalError:
         print("새의 속도 정보를 찾을 수 없습니다.")
     
